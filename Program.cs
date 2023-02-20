@@ -4,7 +4,11 @@
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to Address Book\r\nProgram in\r\nAddressBookMain class on\r\n\r\nSTART Master Branch");
+            AddressBook myAddressBook = new AddressBook();
+            Contacts newContact = new Contacts("Prince", "Praveen", "INDIA", "8369319177", "prince.p@example.com");
+
+            myAddressBook.AddContact(newContact);
+            myAddressBook.PrintContacts();
         }
     }
 }
