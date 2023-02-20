@@ -5,26 +5,12 @@
         public static void Main(string[] args)
         {
             AddressBook myAddressBook = new AddressBook();
-
-
-            Console.WriteLine("Add new contact:");
-            Console.Write("Enter first name: ");
-            string firstName = Console.ReadLine();
-            Console.Write("Enter last name: ");
-            string lastName = Console.ReadLine();
-            Console.Write("Enter country: ");
-            string country = Console.ReadLine();
-            Console.Write("Enter phone number: ");
-            string phoneNumber = Console.ReadLine();
-            Console.Write("Enter email: ");
-            string email = Console.ReadLine();
-
-            Contacts newContact = new Contacts(firstName, lastName, country, phoneNumber, email);
-
+            Contacts newContact = new Contacts("Prince", "Praveen", "INDIA", "8369319177", "prince.p@example.com");
             myAddressBook.AddContact(newContact);
-            Console.WriteLine("Contact Details: ");
             myAddressBook.PrintContacts();
 
+            myAddressBook.EditContacts("Prince", "Praveen", "Prince", "Akhoury", "INDIA", "8369319188", "prince13.p@example.com");
+            myAddressBook.PrintContacts();
 
         }
     }
