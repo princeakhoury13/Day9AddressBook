@@ -9,11 +9,13 @@ namespace Day9AddressBook
     public class AddressBook
     {
         public Contacts[] ContactInfo { get; set; }
+        
         public int NumberOfContacts { get; set; }
 
         public AddressBook()
         {
             ContactInfo = new Contacts[100];
+            
             NumberOfContacts = 0;
         }
 
@@ -44,6 +46,24 @@ namespace Day9AddressBook
                     ContactInfo[i].country = country;
                     ContactInfo[i].phoneNumber = phoneNumber;
                     ContactInfo[i].email = email;
+                }
+            }
+        }
+
+        public void DeleteContact(string firstName, string lastName)
+        {
+            for (int i = 0; i < NumberOfContacts; i++)
+            {
+                if (ContactInfo[i].firstName == firstName && ContactInfo[i].lastName == lastName)
+                {
+                    
+                    for (int j = i; j < NumberOfContacts - 1; j++)
+                    {
+                        ContactInfo[j] = ContactInfo[j + 1];
+                    }
+                    ContactInfo[NumberOfContacts - 1] = null; 
+                    NumberOfContacts--; 
+                    return; 
                 }
             }
         }
