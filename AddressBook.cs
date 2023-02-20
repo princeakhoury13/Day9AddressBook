@@ -32,5 +32,20 @@ namespace Day9AddressBook
                     ContactInfo[i].firstName, ContactInfo[i].lastName, ContactInfo[i].country, ContactInfo[i].phoneNumber, ContactInfo[i].email);
             }
         }
+
+        public void EditContacts(string firstName, string lastName, string newFirstName, string newLastName, string country, string phoneNumber, string email)
+        {
+            for (int i = 0; i < NumberOfContacts; i++)
+            {
+                if (ContactInfo[i].firstName == firstName && ContactInfo[i].lastName == lastName)
+                {
+                    ContactInfo[i].firstName = newFirstName;
+                    ContactInfo[i].lastName = newLastName;
+                    ContactInfo[i].country = country;
+                    ContactInfo[i].phoneNumber = phoneNumber;
+                    ContactInfo[i].email = email;
+                }
+            }
+        }
     }
 }
