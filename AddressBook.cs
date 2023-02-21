@@ -8,30 +8,31 @@ namespace Day9AddressBook
 {
     public class AddressBook
     {
-        public Contacts[] ContactInfo { get; set; }
-        
-        public int NumberOfContacts { get; set; }
+        public List<Contacts> ContactInfo { get; set; }
+
+        public int NumberOfContacts { get { return ContactInfo.Count; } }
 
         public AddressBook()
         {
-            ContactInfo = new Contacts[100];
-            
-            NumberOfContacts = 0;
+            ContactInfo = new List<Contacts>();
+
+            //NumberOfContacts = 0;
         }
 
         public void AddContact(Contacts contact)
         {
-            ContactInfo[NumberOfContacts] = contact;
-            NumberOfContacts++;
+            ContactInfo.Add(contact);
+            //ContactInfo[NumberOfContacts] = contact;
+            //NumberOfContacts++;
         }
 
 
         public void PrintContacts()
         {
-            for (int i = 0; i < NumberOfContacts; i++)
+            foreach (Contacts contact in ContactInfo)
             {
                 Console.WriteLine("Name: {0} {1}\nCountry: {2}\nPhone: {3}\nEmail: {4}\n",
-                    ContactInfo[i].firstName, ContactInfo[i].lastName, ContactInfo[i].country, ContactInfo[i].phoneNumber, ContactInfo[i].email);
+                    contact.firstName, contact.lastName, contact.country, contact.phoneNumber, contact.email);
             }
         }
 
@@ -56,14 +57,8 @@ namespace Day9AddressBook
             {
                 if (ContactInfo[i].firstName == firstName && ContactInfo[i].lastName == lastName)
                 {
-                    
-                    for (int j = i; j < NumberOfContacts - 1; j++)
-                    {
-                        ContactInfo[j] = ContactInfo[j + 1];
-                    }
-                    ContactInfo[NumberOfContacts - 1] = null; 
-                    NumberOfContacts--; 
-                    return; 
+                    ContactInfo.RemoveAt(i);
+                    return;
                 }
             }
         }
